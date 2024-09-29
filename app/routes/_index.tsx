@@ -25,6 +25,10 @@ export const loader = async ({ context, request }: LoaderFunctionArgs) => {
 	const cf = context.cloudflare as { city?: string; region?: string } | undefined
 	let userCity = null
 
+	console.log(cf)
+	// console.log(url)
+	console.log(userCity)
+
 	if (cf?.region === 'California') {
 		userCity = cf.city || null
 	}
