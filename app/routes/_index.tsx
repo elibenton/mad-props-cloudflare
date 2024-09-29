@@ -22,16 +22,12 @@ interface LoaderData {
 
 export const loader = async ({ context, request }: LoaderFunctionArgs) => {
 	const url = new URL(request.url)
-	const cf = context.cloudflare as { city?: string; region?: string } | undefined
-	let userCity = null
+	const { cf } = context.cloudflare
 
-	console.log(cf)
+	console.log(cf?.city)
 	// console.log(url)
-	console.log(userCity)
-
-	if (cf?.region === 'California') {
-		userCity = cf.city || null
-	}
+	// console.log(cuserCity)
+	const userCity = cf?.city
 
 	// Fetch state and local props data here
 	// For demonstration, we're using static data
@@ -81,32 +77,15 @@ export default function Index() {
 
 			<section>
 				<h2 className='text-2xl font-semibold mb-4'>Local Propositions</h2>
-				{userCity ? (
-					<>
-						<p className='mb-4'>It appears you live in {userCity}.</p>
-						<button className='text-blue-500 underline' onClick={() => setManualCity('')}>
-							Enter manually instead?
-						</button>
-						<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4'>
-							{localProps.map((prop) => (
-								<PropCard key={prop.letter} prop={prop} />
-							))}
-						</div>
-					</>
-				) : (
-					<div className='mb-4'>
-						<label htmlFor='cityInput' className='block mb-2'>
-							Where are you registered to vote? We'll show you your local props:
-						</label>
-						<input
-							id='cityInput'
-							type='text'
-							value={manualCity}
-							onChange={(e) => setManualCity(e.target.value)}
-							className='border p-2 rounded'
-						/>
-					</div>
-				)}
+				<p className='mb-4'>It appears you live in {userCity}.</p>
+				<button className='text-blue-500 underline' onClick={() => setManualCity('')}>
+					Enter manually instead?
+				</button>
+				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4'>
+					{localProps.map((prop) => (
+						<PropCard key={prop.letter} prop={prop} />
+					))}
+				</div>
 			</section>
 		</div>
 	)
