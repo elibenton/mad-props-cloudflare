@@ -15,9 +15,12 @@
     "cf-typegen": "wrangler types"
   },
   "dependencies": {
+    "@headlessui/react": "^2.1.8",
+    "@heroicons/react": "^2.1.5",
     "@remix-run/cloudflare": "^2.12.0",
     "@remix-run/cloudflare-pages": "^2.12.0",
     "@remix-run/react": "^2.12.0",
+    "@tailwindcss/forms": "^0.5.9",
     "isbot": "^4.1.0",
     "react": "18.3",
     "react-dom": "18.3"
