@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { json, LoaderFunctionArgs } from '@remix-run/cloudflare'
 import { useLoaderData, Link } from '@remix-run/react'
 
@@ -8,6 +9,10 @@ interface Prop {
 	location: string
 	description: string
 	imageUrl: string
+}
+
+interface Vote {
+	[key: string]: 'yes' | 'no' | 'undecided'
 }
 
 export const loader = async ({ context }: LoaderFunctionArgs) => {
@@ -110,14 +115,59 @@ export const loader = async ({ context }: LoaderFunctionArgs) => {
 
 	const localProps: Prop[] = [
 		{
-			letter: 'CC',
-			slug: 'no-farming',
-			title: 'No Farming',
-			description: 'No factory farming within city limits',
-			imageUrl: '/logo-dark.png',
+			letter: 'A',
+			slug: 'parking-reform',
+			title: 'Parking Reform Initiative',
+			description:
+				'Reduce minimum parking requirements for new developments to promote affordable housing and sustainable transportation.',
+			imageUrl: '/images/parking.png',
+			location: 'Los Angeles'
+		},
+		{
+			letter: 'B',
+			slug: 'rent-control-expansion',
+			title: 'Expand Rent Control',
+			description:
+				'Extend rent control protections to buildings constructed between 1978 and 1995.',
+			imageUrl: '/images/apartment.png',
+			location: 'Santa Monica'
+		},
+		{
+			letter: 'C',
+			slug: 'beach-access',
+			title: 'Improve Beach Access',
+			description:
+				'Fund new public transportation routes and parking facilities to increase accessibility to beaches.',
+			imageUrl: '/images/beach.png',
+			location: 'Malibu'
+		},
+		{
+			letter: 'D',
+			slug: 'urban-farming',
+			title: 'Urban Farming Initiative',
+			description:
+				'Allow and promote urban farming in residential areas to increase local food production and sustainability.',
+			imageUrl: '/images/farm.png',
+			location: 'Pasadena'
+		},
+		{
+			letter: 'E',
+			slug: 'homeless-services',
+			title: 'Homeless Services Funding',
+			description:
+				'Increase funding for homeless services and affordable housing through a new business tax.',
+			imageUrl: '/images/shelter.png',
+			location: 'Long Beach'
+		},
+		{
+			letter: 'F',
+			slug: 'clean-energy',
+			title: 'Clean Energy Transition',
+			description:
+				'Require all new buildings to include solar panels and transition city operations to 100% renewable energy by 2030.',
+			imageUrl: '/images/solar-panel.png',
 			location: 'Berkeley'
 		}
-		// ... add more props
 	]
 
 	return json({ userCity, stateProps, localProps })
@@ -126,29 +176,60 @@ export const loader = async ({ context }: LoaderFunctionArgs) => {
 export default function Index() {
 	const { userCity, stateProps, localProps } = useLoaderData<typeof loader>()
 
+	const filteredLocalProps = localProps.filter(
+		(prop) => prop.location.toLocaleLowerCase() === userCity?.toLowerCase()
+	)
+
+	const [votes, setVotes] = useState<Vote>({})
+
+	useEffect(() => {
+		const savedVotes = localStorage.getItem('propVotes')
+		if (savedVotes) {
+			setVotes(JSON.parse(savedVotes))
+		}
+	}, [])
+
+	const handleVote = (propId: string) => {
+		const currentVote = votes[propId] || 'undecided'
+		const newVote: VoteState =
+			currentVote === 'undecided' ? 'yes' : currentVote === 'yes' ? 'no' : 'undecided'
+		const newVotes = { ...votes, [propId]: newVote }
+		setVotes(newVotes)
+		localStorage.setItem('propVotes', JSON.stringify(newVotes))
+	}
+
 	return (
 		<div className='container mx-auto p-4'>
 			<h1 className='text-4xl font-bold mb-8'>Mad Props 2024</h1>
-			{/* <h1 className='text-2xl font-bold mb-8'>{userCity}</h1> */}
 
-			<section className='mb-12'>
-				<h2 className='text-2xl font-semibold sticky top-0 sm:relative bg-white border-b-2 border-black -mx-4 px-4 py-2 z-10'>
+			<section className='mb-36'>
+				<h2 className='text-2xl font-extrabold sticky top-0 sm:relative bg-white border-b-2 border-black -mx-4 px-4 py-2 z-10 f'>
 					California Propositions
 				</h2>
 				<div>
 					{stateProps.map((prop) => (
-						<PropCard key={prop.location + prop.letter} prop={prop} />
+						<PropCard
+							key={prop.location + prop.letter}
+							prop={prop}
+							vote={votes[`${prop.location}-${prop.letter}`]}
+							onVote={(vote) => handleVote(`${prop.location}-${prop.letter}`)}
+						/>
 					))}
 				</div>
 			</section>
 
-			<section className='mb-12'>
-				<h2 className='text-2xl font-semibold sticky top-0 sm:relative bg-white border-b-2 border-black -mx-4 px-4 py-2 z-10'>
+			<section className='mb-36'>
+				<h2 className='text-2xl font-extrabold sticky top-0 sm:relative bg-white border-b-2 border-black -mx-4 px-4 py-2 z-10'>
 					{userCity} Propositions
 				</h2>
 				<div>
-					{localProps.map((prop) => (
-						<PropCard key={prop.location + prop.letter} prop={prop} />
+					{filteredLocalProps.map((prop) => (
+						<PropCard
+							key={prop.location + prop.letter}
+							prop={prop}
+							vote={votes[`${prop.location}-${prop.letter}`]}
+							onVote={(vote) => handleVote(`${prop.location}-${prop.letter}`, vote)}
+						/>
 					))}
 				</div>
 			</section>
@@ -156,10 +237,44 @@ export default function Index() {
 	)
 }
 
-function PropCard({ prop }: { prop: Prop }) {
+function PropCard({
+	prop,
+	vote = 'undecided',
+	onVote
+}: {
+	prop: Prop
+	vote?: VoteState
+	onVote: () => void
+}) {
+	const getVoteClass = (voteState: VoteState) => {
+		switch (voteState) {
+			case 'yes':
+				return 'bg-green-100'
+			case 'no':
+				return 'bg-red-100'
+			default:
+				return 'bg-white'
+		}
+	}
+
+	const getVoteText = (voteState: VoteState) => {
+		switch (voteState) {
+			case 'yes':
+				return 'Yes'
+			case 'no':
+				return 'No'
+			default:
+				return ''
+		}
+	}
+
 	return (
-		<div className='border-b-2 border-black -mx-4 sm:mx-0 py-6 px-4 overflow-hidden group hover:bg-gray-100'>
-			<div className='max-w-3xl mx-auto flex flex-row'>
+		<button
+			className={`text-left border-b-2 border-black -mx-4 sm:mx-0 py-6 px-4 overflow-hidden group ${getVoteClass(
+				vote
+			)} relative`}
+			onClick={onVote}>
+			<div className='max-w-3xl mx-auto flex flex-row relative'>
 				<div className='flex-grow space-y-4 -mr-24 sm:mr-0'>
 					<h3 className='text-xl font-semibold mb-2'>
 						<b>Prop {prop.letter}</b> {prop.title}
@@ -167,16 +282,16 @@ function PropCard({ prop }: { prop: Prop }) {
 					<p>{prop.description}</p>
 					<Link
 						to={`/${prop.location.toLowerCase()}/prop-${prop.letter.toLowerCase()}`}
-						className='bg-blue-500 text-white px-4 py-2 rounded inline-block'>
+						className='border-2 border-black font-medium px-4 py-2 rounded inline-block bg-white text-black'>
 						Learn More
 					</Link>
 				</div>
 				<img
 					src={prop.imageUrl}
 					alt={`Prop ${prop.letter}`}
-					className='relative flex-none -right-24 sm:right-0 w-52 h-52 sm:w-72 sm:h-72 object-contain object-center group-hover:rotate-6 duration-200 ease-in-out p-1'
+					className='relative flex-none -right-24 sm:right-0 w-52 h-52 sm:w-72 sm:h-72 object-contain object-center p-1'
 				/>
 			</div>
-		</div>
+		</button>
 	)
 }
