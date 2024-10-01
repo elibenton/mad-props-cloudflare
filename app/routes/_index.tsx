@@ -51,14 +51,13 @@ export default function Index() {
 		setIsOpen(false)
 	}
 
-	const handleVote = (propId: string) => {
-		const currentVote = votes[propId] || 'undecided'
-		const newVote =
-			currentVote === 'undecided' ? 'yes' : currentVote === 'yes' ? 'no' : 'undecided'
+	// Handler for voting
+	const handleVote = (propId: string, newVote: VoteState) => {
 		const newVotes = { ...votes, [propId]: newVote }
 		setVotes(newVotes)
 		localStorage.setItem('propVotes', JSON.stringify(newVotes))
 	}
+
 	return (
 		<div className='max-w-4xl mx-auto p-4'>
 			<div className='max-w-3xl'>
@@ -79,7 +78,7 @@ export default function Index() {
 							key={prop.location + prop.letter}
 							prop={prop}
 							vote={votes[`${prop.location}-${prop.letter}`]}
-							onVote={(vote) => handleVote(`${prop.location}-${prop.letter}`)}
+							onVote={(newVote) => handleVote(`${prop.location}-${prop.letter}`, newVote)}
 						/>
 					))}
 				</div>
@@ -91,7 +90,7 @@ export default function Index() {
 						<button onClick={() => setIsOpen(true)} className='w-full text-left'>
 							<h2 className='text-2xl font-extrabold'>{userCity} Propositions</h2>
 							<p className='text-sm border-b-2 border-black pb-2 italic'>
-								If you are registered somewhere else, click here.
+								Registered somewhere else? Click here.
 							</p>
 						</button>
 					</div>
@@ -104,7 +103,7 @@ export default function Index() {
 							key={prop.location + prop.letter}
 							prop={prop}
 							vote={votes[`${prop.location}-${prop.letter}`]}
-							onVote={(vote) => handleVote(`${prop.location}-${prop.letter}`, vote)}
+							onVote={(newVote) => handleVote(`${prop.location}-${prop.letter}`, newVote)}
 						/>
 					))}
 				</div>
@@ -120,59 +119,44 @@ function PropCard({
 }: {
 	prop: Prop
 	vote?: VoteState
-	onVote: () => void
+	onVote: (newVote: VoteState) => void
 }) {
-	const getVoteClass = (voteState: VoteState) => {
-		switch (voteState) {
-			case 'yes':
-				return 'bg-green-100'
-			case 'no':
-				return 'bg-red-100'
-			default:
-				return 'bg-white'
-		}
-	}
-
-	const getVoteText = (voteState: VoteState) => {
-		switch (voteState) {
-			case 'yes':
-				return 'Yes'
-			case 'no':
-				return 'No'
-			default:
-				return ''
-		}
-	}
-
 	return (
-		<button
-			className={`text-left border-b-2 border-black -mx-4 py-5 px-4 overflow-hidden group ${getVoteClass(
-				vote
-			)} relative`}
-			onClick={onVote}>
+		<div className='text-left border-b-2 border-black -mx-4 py-5 px-4 overflow-hidden group relative'>
 			<div className='sm:max-w-4xl mx-auto flex flex-row relative justify-between'>
 				<div className='space-y-4 -mr-16 sm:mr-0 max-w-2xl flex flex-col justify-between'>
 					<div className='overflow-wrap'>
+						{/* Proposition title and description */}
 						<h3 className='text-xl font-semibold mb-2 '>
 							<b>Prop {prop.letter}</b> {prop.title}
 						</h3>
 						<p>{prop.description}</p>
 					</div>
 					<div className='self-start space-x-2'>
+						{/* Learn More link */}
 						<Link
 							to={`/${prop.location.toLowerCase()}/prop-${prop.letter.toLowerCase()}`}
 							prefetch='intent'
-							className='border-2 border-black font-medium px-4 py-2 rounded inline-block bg-white text-black'>
+							className='border-2 border-black font-sm px-2.5 py-1 rounded inline-block bg-white text-black'>
 							Learn More
 						</Link>
-						<button className='border-2 border-green-500 bg-green-100 font-sm px-2.5 py-1 rounded inline-block text-green-500 active:bg-green-500 active:text-green-900'>
+						{/* Yes vote button */}
+						<button
+							onClick={() => onVote('yes')}
+							className={`border-2 border-green-500 font-sm px-2.5 py-1 rounded inline-block 
+                ${vote === 'yes' ? 'bg-green-500 text-white' : 'bg-green-100 text-green-500'}`}>
 							Yes
 						</button>
-						<button className='border-2 border-red-500 bg-red-100 font-sm px-2.5 py-1 rounded inline-block text-red-500 active:bg-red-500 active:text-red-900'>
+						{/* No vote button */}
+						<button
+							onClick={() => onVote('no')}
+							className={`border-2 border-red-500 font-sm px-2.5 py-1 rounded inline-block 
+                ${vote === 'no' ? 'bg-red-500 text-white' : 'bg-red-100 text-red-500'}`}>
 							No
 						</button>
 					</div>
 				</div>
+				{/* Proposition image */}
 				{prop.imageUrl && (
 					<img
 						src={prop.imageUrl}
@@ -181,6 +165,6 @@ function PropCard({
 					/>
 				)}
 			</div>
-		</button>
+		</div>
 	)
 }
