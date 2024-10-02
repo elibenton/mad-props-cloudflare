@@ -1,5 +1,5 @@
 import type { LinksFunction, MetaFunction } from '@remix-run/cloudflare'
-import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
+import { Link, Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
 
 import './tailwind.css'
 
@@ -57,15 +57,33 @@ export function Layout({ children }: { children: React.ReactNode }) {
 			<body>
 				{children}
 				<section className='w-full border-t-2 border-black flex flex-col sm:flex-row justify-between p-4'>
-					<h1 className='text-lg font-bold mt-2 mb-6'>MAD PROPS 2024</h1>
+					<Link prefetch='viewport' to='/'>
+						<h1 className='text-lg font-bold mt-2 mb-6'>MAD PROPS 2024</h1>
+					</Link>
 					<div className='flex flex-row space-x-4'>
 						<ul>
-							<li>About</li>
-							<li>Terms</li>
+							<li>
+								<Link prefetch='viewport' to='/about'>
+									About
+								</Link>
+							</li>
+							<li>
+								<Link prefetch='viewport' to='/terms'>
+									Terms
+								</Link>
+							</li>
 						</ul>
 						<ul>
-							<li>KALW</li>
-							<li>The Pacific Review</li>
+							<li>
+								<Link prefetch='viewport' to='https://www.kalw.org/'>
+									KALW
+								</Link>
+							</li>
+							<li>
+								<Link prefetch='viewport' to='https://www.pacificreview.org/'>
+									The Pacific Review
+								</Link>
+							</li>
 						</ul>
 					</div>
 				</section>

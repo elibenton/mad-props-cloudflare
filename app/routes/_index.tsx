@@ -84,7 +84,7 @@ export default function Index() {
 				</div>
 			</section>
 
-			<section className='mb-36'>
+			<section className='mb-36 min-h-72'>
 				{!isOpen ? (
 					<div className='sticky top-0 sm:relative bg-white z-10 -mx-4 pt-3 px-4'>
 						<button onClick={() => setIsOpen(true)} className='w-full text-left'>
@@ -98,14 +98,28 @@ export default function Index() {
 					<CityPicker onCityChange={handleCityChange} />
 				)}
 				<div className='flex flex-col'>
-					{filteredLocalProps.map((prop) => (
-						<PropCard
-							key={prop.location + prop.letter}
-							prop={prop}
-							vote={votes[`${prop.location}-${prop.letter}`]}
-							onVote={(newVote) => handleVote(`${prop.location}-${prop.letter}`, newVote)}
-						/>
-					))}
+					{filteredLocalProps.length === 0 ? (
+						<div className='py-3'>
+							<p>There appear to be no local propositions in {userCity}.</p>
+							<p>
+								{' '}
+								Have we made a mistake? Please email us at{' '}
+								<a className='underline' href='mailto:mail@madprops2024.org'>
+									mail@madprops2024.org
+								</a>
+								.
+							</p>
+						</div>
+					) : (
+						filteredLocalProps.map((prop) => (
+							<PropCard
+								key={prop.location + prop.letter}
+								prop={prop}
+								vote={votes[`${prop.location}-${prop.letter}`]}
+								onVote={(newVote) => handleVote(`${prop.location}-${prop.letter}`, newVote)}
+							/>
+						))
+					)}
 				</div>
 			</section>
 		</div>

@@ -29,7 +29,7 @@
       "title": "makes it easier for local governments to borrow money",
       "description": "Usually it requires a 66% majority. Vote yes to lower that threshold to 55%.",
       "slug": "voting-threshold",
-      "imageUrl": "/images/3d-fluency-ballot.png",
+      "imageUrl": "/images/ballot-box.png",
       "location": "California"
     },
     {
@@ -37,7 +37,7 @@
       "title": "make forced labor in California prisons illegal",
       "description": "If this sounds like slavery, well, many argue it is. A similar measure tanked in 2022 because it was estimated it would cost $1.5 billion to pay the states prisoners for their labor",
       "slug": "same-sex-marriage",
-      "imageUrl": "images/3d-fluency-handcuffs.png",
+      "imageUrl": "images/orange-prison-jumpsuit.png",
       "location": "California"
     },
     {
@@ -77,7 +77,7 @@
       "title": "increases some petty theft and drug crimes to felonies",
       "description": "Ten years ago, these were felonies and voters approved a prop that would make them misdemeanors. Now, post covid, post doom loop, many want to change it back.",
       "slug": "criminal-penalties",
-      "imageUrl": "/images/3d-fluency-police-badge.png",
+      "imageUrl": "/images/black-and-white-police-car.png",
       "location": "California"
     }
   ],
