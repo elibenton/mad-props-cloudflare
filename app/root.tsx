@@ -1,4 +1,4 @@
-import type { LinksFunction } from '@remix-run/cloudflare'
+import type { LinksFunction, MetaFunction } from '@remix-run/cloudflare'
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
 
 import './tailwind.css'
@@ -15,6 +15,35 @@ export const links: LinksFunction = () => [
 		href: 'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap'
 	}
 ]
+
+export const meta: MetaFunction = ({ location }) => {
+	if (location.pathname === '/') {
+		return [
+			{ title: `MAD PROPS '24` },
+			{
+				property: 'og:title',
+				content: "MAD PROPS '24"
+			},
+			{
+				name: 'description',
+				content:
+					'A non-partisan, not-too-serious voter guide to the California ballot measures.'
+			}
+		]
+	} else {
+		return [
+			{ title: location.pathname },
+			{
+				property: 'og:title',
+				content: location.pathname
+			},
+			{
+				name: 'description',
+				content: 'Description for ' + location.pathname
+			}
+		]
+	}
+}
 
 export function Layout({ children }: { children: React.ReactNode }) {
 	return (
