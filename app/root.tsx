@@ -27,6 +27,19 @@ export function Layout({ children }: { children: React.ReactNode }) {
 			</head>
 			<body>
 				{children}
+				<section className='w-full border-t-2 border-black flex flex-col sm:flex-row justify-between p-4'>
+					<h1 className='text-lg font-bold mt-2 mb-6'>MAD PROPS 2024</h1>
+					<div className='flex flex-row space-x-4'>
+						<ul>
+							<li>About</li>
+							<li>Terms</li>
+						</ul>
+						<ul>
+							<li>KALW</li>
+							<li>The Pacific Review</li>
+						</ul>
+					</div>
+				</section>
 				<ScrollRestoration />
 				<Scripts />
 			</body>

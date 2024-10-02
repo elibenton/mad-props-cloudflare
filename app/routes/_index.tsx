@@ -69,7 +69,7 @@ export default function Index() {
 			</div>
 
 			<section className='mb-36'>
-				<h2 className='text-2xl font-extrabold sticky top-0 sm:relative bg-white border-b-2 border-black -mx-4 px-4 py-2 z-10 f'>
+				<h2 className='text-2xl font-extrabold sticky top-0 sm:relative bg-white border-b-2 border-black -mx-4 px-4 py-3 z-10'>
 					California Propositions
 				</h2>
 				<div className='flex flex-col'>
@@ -86,10 +86,10 @@ export default function Index() {
 
 			<section className='mb-36'>
 				{!isOpen ? (
-					<div className='sticky top-0 sm:relative bg-white z-10 *:-mx-4 *:px-4'>
+					<div className='sticky top-0 sm:relative bg-white z-10 -mx-4 pt-3 px-4'>
 						<button onClick={() => setIsOpen(true)} className='w-full text-left'>
 							<h2 className='text-2xl font-extrabold'>{userCity} Propositions</h2>
-							<p className='text-sm border-b-2 border-black pb-2 italic'>
+							<p className='text-sm border-b-2 border-black -mx-4 px-4 pb-3 italic'>
 								Registered somewhere else? Click here.
 							</p>
 						</button>
@@ -122,49 +122,39 @@ function PropCard({
 	onVote: (newVote: VoteState) => void
 }) {
 	return (
-		<div className='text-left border-b-2 border-black -mx-4 py-5 px-4 overflow-hidden group relative'>
-			<div className='sm:max-w-4xl mx-auto flex flex-row relative justify-between'>
-				<div className='space-y-4 -mr-16 sm:mr-0 max-w-2xl flex flex-col justify-between'>
-					<div className='overflow-wrap'>
-						{/* Proposition title and description */}
-						<h3 className='text-xl font-semibold mb-2 '>
-							<b>Prop {prop.letter}</b> {prop.title}
-						</h3>
-						<p>{prop.description}</p>
-					</div>
-					<div className='self-start space-x-2'>
-						{/* Learn More link */}
-						<Link
-							to={`/${prop.location.toLowerCase()}/prop-${prop.letter.toLowerCase()}`}
-							prefetch='intent'
-							className='border-2 border-black font-sm px-2.5 py-1 rounded inline-block bg-white text-black'>
-							Learn More
-						</Link>
-						{/* Yes vote button */}
-						<button
-							onClick={() => onVote('yes')}
-							className={`border-2 border-green-500 font-sm px-2.5 py-1 rounded inline-block 
-                ${vote === 'yes' ? 'bg-green-500 text-white' : 'bg-green-100 text-green-500'}`}>
-							Yes
-						</button>
-						{/* No vote button */}
-						<button
-							onClick={() => onVote('no')}
-							className={`border-2 border-red-500 font-sm px-2.5 py-1 rounded inline-block 
-                ${vote === 'no' ? 'bg-red-500 text-white' : 'bg-red-100 text-red-500'}`}>
-							No
-						</button>
-					</div>
+		// <Link
+		// 	to={`/${prop.location.toLowerCase()}/prop-${prop.letter.toLowerCase()}`}
+		// 	prefetch='intent'>
+		<div className='border-b-2 border-black -mx-4 py-5 px-4 overflow-hidden group relative flex flex-row justify-between'>
+			<div className={`space-y-4 ${prop.imageUrl ? '-mr-16' : 'mr-0'} sm:mr-0`}>
+				{/* Proposition title and description */}
+				<h3 className='text-xl font-semibold mb-2'>
+					<b>Prop {prop.letter}</b> {prop.title}
+				</h3>
+				<p>{prop.description}</p>
+				<div className='space-x-2'>
+					<button
+						onClick={() => onVote('yes')}
+						className={`z-10 border-2 border-green-500 font-sm px-2.5 py-1 rounded inline-block 
+                ${vote === 'yes' ? 'bg-green-500 text-white' : 'bg-green-50 text-green-500'}`}>
+						Yes
+					</button>
+					<button
+						onClick={() => onVote('no')}
+						className={`z-10 border-2 border-red-500 font-sm px-2.5 py-1 rounded inline-block 
+                ${vote === 'no' ? 'bg-red-500 text-white' : 'bg-red-50 text-red-500'}`}>
+						No
+					</button>
 				</div>
-				{/* Proposition image */}
-				{prop.imageUrl && (
-					<img
-						src={prop.imageUrl}
-						alt={`Prop ${prop.letter}`}
-						className='relative flex-none -right-16 sm:right-0 w-52 h-52 sm:w-72 sm:h-72 object-contain object-center p-1'
-					/>
-				)}
 			</div>
+			{prop.imageUrl && (
+				<img
+					src={prop.imageUrl}
+					alt={`Prop ${prop.letter}`}
+					className='relative flex-none -right-16 sm:right-0 w-52 h-52 sm:w-72 sm:h-72 object-contain object-center p-1'
+				/>
+			)}
 		</div>
+		// </Link>
 	)
 }
