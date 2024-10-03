@@ -5,7 +5,7 @@
     "location": "Albany",
     "letter": "C",
     "description": "TK TK",
-    "title": "Sidewalk Repairs Parcel Tax Measure",
+    "title": "increases property tax to fund sidewalk repairs",
     "Yes": "A \"yes\" vote supports authorizing an annual parcel tax of $0.017 per lot square foot on non-exempt property, replacing the existing parcel tax, to fund sidewalk and pathway repairs and upgrades for safety and accessibility, for approximately 12 years until June 30, 2035.",
     "No": "A \"no\" vote opposes authorizing an annual parcel tax of $0.017 per lot square foot on non-exempt property, replacing the existing parcel tax, to fund sidewalk and pathway repairs and upgrades for safety and accessibility, for approximately 12 years until June 30, 2035."
   },
@@ -14,7 +14,7 @@
     "location": "Albany",
     "letter": "R",
     "description": "TK TK",
-    "title": "Business License Tax for Rental Assistance Measure",
+    "title": "adds news tax on landlords to fund resources for renters",
     "Yes": "A \"yes\" vote supports establishing a supplemental business license tax on residential rental businesses, at 0.36% for four or fewer units and 1% for five or more units, to fund rental assistance, code enforcement, and legal support.",
     "No": "A \"no\" vote opposes establishing a supplemental business license tax on residential rental businesses, at 0.36% for four or fewer units and 1% for five or more units, to fund rental assistance, code enforcement, and legal support."
   },
@@ -23,7 +23,7 @@
     "location": "Albany",
     "letter": "S",
     "description": "TK TK",
-    "title": "City Manager Appointment Authority Amendment",
+    "title": "gives the City Manager new authority to appoint city officers",
     "Yes": "A \"yes\" vote supports delegating the authority to appoint City officers and department heads, except the City Attorney, and to organize the City, from the City Council to the City Manager.",
     "No": "A \"no\" vote opposes delegating the authority to appoint City officers and department heads, except the City Attorney, and to organize the City, from the City Council to the City Manager."
   },
@@ -32,7 +32,7 @@
     "location": "Albany",
     "letter": "T",
     "description": "TK TK",
-    "title": "Eliminate Bond Requirement for City Officers Amendment",
+    "title": "eliminates bond requirement for city officers",
     "Yes": "A \"yes\" vote supports eliminating the requirement for City officers to execute a bond before starting their official duties.",
     "No": "A \"no\" vote opposes eliminating the requirement for City officers to execute a bond before starting their official duties."
   },
@@ -41,7 +41,7 @@
     "location": "Albany",
     "letter": "U",
     "description": "TK TK",
-    "title": "Bonding Limit Exceptions Amendment",
+    "title": "removes a special exception for school-related bonds",
     "Yes": "A \"yes\" vote supports removing the exception for school purpose bonds from the City's bonding limit and clarifying it as the lesser of 15% of assessed property value or the statutory maximum.",
     "No": "A \"no\" vote opposes removing the exception for school purpose bonds from the City's bonding limit and clarifying it as the lesser of 15% of assessed property value or the statutory maximum."
   },
@@ -50,7 +50,7 @@
     "location": "Albany",
     "letter": "V",
     "description": "TK TK",
-    "title": "Voting Eligibility for Local Elections Amendment",
+    "title": "allows 16 years olds to vote in local elections",
     "Yes": "A \"yes\" vote supports allowing U.S. citizens aged 16 and older to vote in local elections and repealing outdated language on former elected officers.",
     "No": "A \"no\" vote opposes allowing U.S. citizens aged 16 and older to vote in local elections and repealing outdated language on former elected officers."
   },
@@ -59,7 +59,7 @@
     "location": "Albany Unified School District",
     "letter": "L",
     "description": "TK TK",
-    "title": "Classroom Improvement and Renovations Bond Measure",
+    "title": "increases property tax to fund new classrooms",
     "Yes": "A \"yes\" vote supports authorizing the district to issue $63.8 million in bonds, requiring an estimated property tax levy of $60 per $100,000 of assessed value, to improve and construct modern classrooms, facilities, and infrastructure.",
     "No": "A \"no\" vote opposes authorizing the district to issue $63.8 million in bonds, requiring an estimated property tax levy of $60 per $100,000 of assessed value, to improve and construct modern classrooms, facilities, and infrastructure."
   },
@@ -67,8 +67,8 @@
     "County": "Alameda",
     "location": "Berkeley",
     "letter": "AA",
-    "description": "A \"yes\" vote supports increasing the city's spending limit to allow the use of existing tax revenue and investment income from 2025 through 2028.A \"yes\" vote supports increasing the city's spending limit to allow the use of existing tax revenue and investment income from 2025 through 2028.",
-    "title": "Expenditure of Tax Revenue and Investment Income Measure",
+    "description": "TK TK",
+    "title": "allows the city to spend more money",
     "Yes": "A \"yes\" vote supports increasing the city's spending limit to allow the use of existing tax revenue and investment income from 2025 through 2028.",
     "No": "A \"no\" vote opposes increasing the city's spending limit to allow the use of existing tax revenue and investment income from 2025 through 2028."
   },
@@ -77,7 +77,7 @@
     "location": "Berkeley",
     "letter": "BB",
     "description": "TK TK",
-    "title": "Housing and Tenants' Rights Measure",
+    "title": "implements rent increase cap of 5% and other tenant protections",
     "Yes": "A \"yes\" vote supports using existing revenue for housing retention, modifying eviction rules, removing rent control exemptions, limiting rent increases to 5%, and requiring tenant rights notices.",
     "No": "A \"no\" vote opposes using existing revenue for housing retention, modifying eviction rules, removing rent control exemptions, limiting rent increases to 5%, and requiring tenant rights notices."
   },
@@ -86,7 +86,7 @@
     "location": "Berkeley",
     "letter": "CC",
     "description": "TK TK",
-    "title": "Rent Payment Fund Measure Measure",
+    "title": "increases rent control exemptions and limit Rent Board power",
     "Yes": "A \"yes\" vote supports using revenue for tenant rent payments, expanding rent control exemptions, allowing rent increases for services, modifying eviction rules, and limiting Rent Board powers.",
     "No": "A \"no\" vote opposes using revenue for tenant rent payments, expanding rent control exemptions, allowing rent increases for services, modifying eviction rules, and limiting Rent Board powers."
   },
@@ -94,8 +94,8 @@
     "County": "Alameda",
     "location": "Berkeley",
     "letter": "DD",
-    "description": "TK TK",
-    "title": "Prohibition of Livestock Facilities Measure",
+    "description": "There are no livestock farms in Berkeley. This is purely symbolic.",
+    "title": "bans livestock farming in the city ",
     "Yes": "A \"yes\" vote supports prohibiting new and expanded livestock facilities in Berkeley, closing existing ones within a year, and imposing a $10,000 daily penalty for violations.",
     "No": "A \"no\" vote opposes prohibiting new and expanded livestock facilities in Berkeley, closing existing ones within a year, and imposing a $10,000 daily penalty for violations."
   },
@@ -104,7 +104,7 @@
     "location": "Berkeley",
     "letter": "EE",
     "description": "TK TK",
-    "title": "Sidewalks and Streets Parcel Tax Measure",
+    "title": "levies a modest property tax to fund street repairs",
     "Yes": "A \"yes\" vote supports authorizing an annual parcel tax of $0.13 per square foot for 12 years to fund street and sidewalk repairs, safety projects, and environmental infrastructure.",
     "No": "A \"no\" vote opposes authorizing an annual parcel tax of $0.13 per square foot for 12 years to fund street and sidewalk repairs, safety projects, and environmental infrastructure."
   },
@@ -113,7 +113,7 @@
     "location": "Berkeley",
     "letter": "FF",
     "description": "TK TK",
-    "title": "Sidewalk and Street Repairs Parcel Tax Measure",
+    "title": "levies a larger tax to fund more comprehensive street repairs",
     "Yes": "A \"yes\" vote supports authorizing an annual parcel tax of $0.17 per square foot for homes and $0.25 for other properties for 14 years to fund street and sidewalk repairs.",
     "No": "A \"no\" vote opposes authorizing an annual parcel tax of $0.17 per square foot for homes and $0.25 for other properties for 14 years to fund street and sidewalk repairs."
   },
@@ -122,7 +122,7 @@
     "location": "Berkeley",
     "letter": "GG",
     "description": "TK TK",
-    "title": "Natural Gas Tax Measure",
+    "title": "taxes the use of natural gas in large buildings",
     "Yes": "A \"yes\" vote supports authorizing a tax of $2.9647 per therm of natural gas for large buildings, excluding certain residence, to fund decarbonization programs.",
     "No": "A \"no\" vote opposes authorizing a tax of $2.9647 per therm of natural gas for large buildings, excluding certain residence, to fund decarbonization programs."
   },
@@ -131,7 +131,7 @@
     "location": "Berkeley",
     "letter": "HH",
     "description": "TK TK",
-    "title": "Indoor Air Quality Standards Measure",
+    "title": "mandates better air filtering in city buildings",
     "Yes": "A \"yes\" vote supports setting new indoor air quality standards for City buildings, banning harmful filtration methods, and allowing private lawsuits for violations.",
     "No": "A \"no\" vote opposes setting new indoor air quality standards for City buildings, banning harmful filtration methods, and allowing private lawsuits for violations."
   },
@@ -140,7 +140,7 @@
     "location": "Berkeley",
     "letter": "W",
     "description": "TK TK",
-    "title": "Real Property Transfer Tax Rates Measure",
+    "title": "increases taxes on property transfers",
     "Yes": "A \"yes\" vote supports setting a 2.5% tax on real property transfers for properties valued at $1.6 million or more, increasing to 3% for $1.9 million or more, and 3.5% for $3 million or more, with annual adjustments, and removing the 2029 expiration.",
     "No": "A \"no\" vote opposes setting a 2.5% tax on real property transfers for properties valued at $1.6 million or more, increasing to 3% for $1.9 million or more, and 3.5% for $3 million or more, with annual adjustments, and removing the 2029 expiration."
   },
@@ -149,7 +149,7 @@
     "location": "Berkeley",
     "letter": "X",
     "description": "TK TK",
-    "title": "Library Maintenance Parcel Tax Measure",
+    "title": "increases property taxes to fund libraries",
     "Yes": "A \"yes\" vote supports authorizing an annual parcel tax of $0.06 per square foot for dwelling units and $0.09 per square foot for other properties to fund Berkeley Public Library facilities and services.",
     "No": "A \"no\" vote opposes authorizing an annual parcel tax of $0.06 per square foot for dwelling units and $0.09 per square foot for other properties to fund Berkeley Public Library facilities and services."
   },
@@ -158,7 +158,7 @@
     "location": "Berkeley",
     "letter": "Y",
     "description": "TK TK",
-    "title": "Park Maintenance Parcel Tax Measure",
+    "title": "increases property taxes to fund parks and landscaping",
     "Yes": "A \"yes\" vote supports increasing the city's special parcel tax for parks, trees, and landscaping maintenance from $0.221 to $0.2652 per square foot of taxable improvements, with exemptions for very low-income property owners.",
     "No": "A \"no\" vote opposed increasing the city's special parcel tax for parks, trees, and landscaping maintenance from $0.221 to $0.2652 per square foot of taxable improvements, with exemptions for very low-income property owners."
   },
@@ -167,7 +167,7 @@
     "location": "Berkeley",
     "letter": "Z",
     "description": "TK TK",
-    "title": "Sugary Drink Tax Extension Measure",
+    "title": "codifies Berkeley's first-in-the-nation soda tax",
     "Yes": "A \"yes\" vote supports removing the January 1, 2027 expiration date and extending indefinitely the general tax on sugary drinks and sweeteners at 1 cent per fluid ounce.",
     "No": "A \"no\" vote opposed removing the January 1, 2027 expiration date and extending indefinitely the general tax on sugary drinks and sweeteners at 1 cent per fluid ounce."
   },
@@ -1472,7 +1472,7 @@
     "location": "San Francisco",
     "letter": "B",
     "description": "TK TK",
-    "title": "Community Health and Medical Facilities Bond Measure",
+    "title": "issues a bond to fund infrastructure, shelters, and public space improvements",
     "Yes": "A \"yes\" vote supports authorizing the city and county to issue $390 million in bonds and requiring an estimated property tax levy of $6.90 per $100,000 in assessed value in order to finance temporary shelters, facilities that deliver healthcare services, pedestrians and street safety improvements, and public space improvements.",
     "No": "A \"no\" vote opposes authorizing the city and county to issue $390 million in bonds and requiring an estimated property tax levy of $6.90 per $100,000 in assessed value in order to finance temporary shelters, facilities that deliver healthcare services, pedestrians and street safety improvements, and public space improvements."
   },
@@ -1481,7 +1481,7 @@
     "location": "San Francisco",
     "letter": "C",
     "description": "TK TK",
-    "title": "Inspector General Amendment",
+    "title": "creates an office of City Inspector General",
     "Yes": "A \"yes\" vote supports creating the position of Inspector General in the Controller's Office, who will review and investigate complaints of fraud, waste, and abuse.",
     "No": "A \"no\" vote opposes creating the position of Inspector General in the Controller's Office, who will review and investigate complaints of fraud, waste, and abuse."
   },
@@ -1490,7 +1490,7 @@
     "location": "San Francisco",
     "letter": "D",
     "description": "TK TK",
-    "title": "City Commissions and Mayoral Authority Amendment",
+    "title": "eliminates half the city commissions and expands Mayor's power to hire and fire department heads",
     "Yes": "A \"yes\" vote supports limiting the number of commissions the city can have to 65, give the mayor sole authority to appoint and remove city department heads, and give the police chief sole authority in adopting rules governing police officers' conduct.",
     "No": "A \"no\" vote opposes limiting the number of commissions the city can have to 65, give the mayor sole authority to appoint and remove city department heads, and give the police chief sole authority in adopting rules governing police officers' conduct."
   },
@@ -1499,7 +1499,7 @@
     "location": "San Francisco",
     "letter": "E",
     "description": "TK TK",
-    "title": "City Commissions Task Force Amendment",
+    "title": "creates task force to reduce number of commissions",
     "Yes": "A \"yes\" vote supports creating a task force regarding commissions, and giving the task force authority to introduce ordinances to implement its recommendations.",
     "No": "A \"no\" vote opposes creating a task force regarding commissions, and giving the task force authority to introduce ordinances to implement its recommendations."
   },
@@ -1508,7 +1508,7 @@
     "location": "San Francisco",
     "letter": "F",
     "description": "TK TK",
-    "title": "Police Staffing and Deferred Retirement Amendment",
+    "title": "allows senior police officers to defer retirement in exchange for a pay raise",
     "Yes": "A \"yes\" vote supports requiring the Police Chief to make a report on future staffing of full-duty sworn officers every three years instead of every two years, require the Police Commission to report annually to the Board of Supervisors on Police Department Staffing, and create a five year program allowing retired officers to continue to work for the Police Department after retiring with pension payments deferred.",
     "No": "A \"no\" vote opposes requiring the Police Chief to make a report on future staffing of full-duty sworn officers every three years instead of every two years, require the Police Commission to report annually to the Board of Supervisors on Police Department Staffing, and create a five year program allowing retired officers to continue to work for the Police Department after retiring with pension payments deferred."
   },
@@ -1517,7 +1517,7 @@
     "location": "San Francisco",
     "letter": "G",
     "description": "TK TK",
-    "title": "Rental Subsidies Amendment",
+    "title": "creates an affordable housing fund for marginalized groups",
     "Yes": "A \"yes\" vote supports appropriating $8.25 million a year to pay for rental subsidies for affordable housing developments for extremely low-income seniors, families, and people with disabilities.",
     "No": "A \"no\" vote opposes appropriating $8.25 million a year to pay for rental subsidies for affordable housing developments for extremely low-income seniors, families, and people with disabilities."
   },
@@ -1526,7 +1526,7 @@
     "location": "San Francisco",
     "letter": "H",
     "description": "TK TK",
-    "title": "Firefighter Retirement Benefits Amendment",
+    "title": "lowers the age at which firefighters can access their highest pension",
     "Yes": "A \"yes\" vote supports changing how pension benefits for Fire Department members are calculated by lowering the age members can receive the highest benefits from 58 to 55.",
     "No": "A \"no\" vote opposes changing how pension benefits for Fire Department members are calculated by lowering the age members can receive the highest benefits from 58 to 55."
   },
@@ -1535,7 +1535,7 @@
     "location": "San Francisco",
     "letter": "I",
     "description": "TK TK",
-    "title": "Nurses and 911 Operators Retirement Benefits Amendment",
+    "title": "incentivizes nurses to join the city by offering enhanced retirement benefits",
     "Yes": "A \"yes\" vote supports allowing registered nurses who are members of the San Francisco Employees Retirement System and meet certain requirements to purchase credits towards their total pension years of service for time previously worked as per diem nurses, and allowing 911 dispatchers, supervisors, and coordinators to increase pension benefits by joining the SFERS Miscellaneous Safety Plan for time worked starting in January 2025.",
     "No": "A \"no\" vote opposes allowing registered nurses who are members of the San Francisco Employees Retirement System and meet certain requirements to purchase credits towards their total pension years of service for time previously worked as per diem nurses, and allowing 911 dispatchers, supervisors, and coordinators to increase pension benefits by joining the SFERS Miscellaneous Safety Plan for time worked starting in January 2025."
   },
@@ -1544,7 +1544,7 @@
     "location": "San Francisco",
     "letter": "J",
     "description": "TK TK",
-    "title": "Children and Youth Programs Amendment",
+    "title": "creates objectives for how money is spent on schools and youth services",
     "Yes": "A \"yes\" vote supports amending the charter to create an initiative to ensure funding for children, youth, and families is used effectively.",
     "No": "A \"no\" vote opposes amending the charter to create an initiative to ensure funding for children, youth, and families is used effectively."
   },
@@ -1553,7 +1553,7 @@
     "location": "San Francisco",
     "letter": "K",
     "description": "TK TK",
-    "title": "Close Upper Great Highway to Private Vehicles and Establish Public Open Recreation Space Measure",
+    "title": "replaces the upper Great Highway with a park",
     "Yes": "A \"yes\" vote supports closing the Upper Great Highway to private motor vehicles seven days a week, and using it as a public open recreation space.",
     "No": "A \"no\" vote opposes closing the Upper Great Highway to private motor vehicles seven days a week, and using it as a public open recreation space."
   },
@@ -1562,7 +1562,7 @@
     "location": "San Francisco",
     "letter": "L",
     "description": "TK TK",
-    "title": "Transportation Network Companies and Autonomous Vehicle Businesses Tax Measure",
+    "title": "taxes ride hailing companies to fund Muni",
     "Yes": "A \"yes\" vote supports placing an additional tax on transportation network companies and autonomous vehicle businesses that provide passenger service for compensation with rates between 1% and 4.5% of gross receipts in San Francisco above $500,000, using the funds for public transportation.",
     "No": "A \"no\" vote opposes placing an additional tax on transportation network companies and autonomous vehicle businesses that provide passenger service for compensation with rates between 1% and 4.5% of gross receipts in San Francisco above $500,000, using the funds for public transportation."
   },
@@ -1571,7 +1571,7 @@
     "location": "San Francisco",
     "letter": "M",
     "description": "TK TK",
-    "title": "Changes to Business Taxes Measure",
+    "title": "decreaess taxes on small businesses and many other business tax changes",
     "Yes": "A \"yes\" vote supports making changes to taxes collected from businesses, including changing various tax rates and increasing the gross receipts tax exemption for small businesses.",
     "No": "A \"no\" vote opposes making changes to taxes collected from businesses."
   },
@@ -1580,7 +1580,7 @@
     "location": "San Francisco",
     "letter": "N",
     "description": "TK TK",
-    "title": "First Responder Student Loans and Training Reimbursement Measure",
+    "title": "creates a fund to pay off first repsonders' student loans",
     "Yes": "A \"yes\" vote supports creating a fund for student loans and education and training programs for eligible city employees, including police officers, firefighters, sheriffs, paramedics, registered nurses, and 911 dispatchers.",
     "No": "A \"no\" vote opposes creating a fund for student loans and education and training programs for eligible city employees, including police officers, firefighters, sheriffs, paramedics, registered nurses, and 911 dispatchers."
   },
@@ -1589,7 +1589,7 @@
     "location": "San Francisco",
     "letter": "O",
     "description": "TK TK",
-    "title": "Local Reproductive Healthcare Including Abortion Policies Initiative",
+    "title": "makes protection of abortion and contraception official city policy",
     "Yes": "A \"yes\" vote supports establishing a city policy to provide protections for people receiving reproductive healthcare, including abortions, create the Reproductive Freedom Fund to support reproductive rights and services, and prohibit city officials from providing information to law enforcement agencies regarding a person's use of contraception, use of in vitro fertilization, pregnancy status, or choice to get an abortion.",
     "No": "A \"no\" vote opposes establishing a city policy to provide protections for people receiving reproductive healthcare, including abortions, create the Reproductive Freedom Fund to support reproductive rights and services, and prohibit city officials from providing information to law enforcement agencies regarding a person's use of contraception, use of in vitro fertilization, pregnancy status, or choice to get an abortion."
   },
@@ -1598,7 +1598,7 @@
     "location": "San Francisco Unified School District",
     "letter": "A",
     "description": "TK TK",
-    "title": "Bond Measure",
+    "title": "issues a bond to fund school repairs",
     "Yes": "A \"yes\" vote supports authorizing the district to issue $790 million in bonds and requiring an estimated property tax levy of $12.95 per $100,000 in assessed value.",
     "No": "A \"no\" vote opposes authorizing the district to issue $790 million in bonds and requiring an estimated property tax levy of $12.95 per $100,000 in assessed value."
   },

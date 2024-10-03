@@ -51,7 +51,7 @@
     {
       "letter": "33",
       "title": "allows cities to impose rent control",
-      "description": "That's right. This prop would only affect one organization. And the main reason — it wants it to stop spending money on other props. It's complicated, and amazingly petty.",
+      "description": "This will be third attempt to repeal the infamous 1995 Costa-Hawkins Act. If successful, California cities will be allowed to impose whatever kinds of rent control they want.",
       "slug": "local-rent-control",
       "imageUrl": "/images/3d-fluency-room.png",
       "location": "California"
@@ -59,7 +59,7 @@
     {
       "letter": "34",
       "title": "forces a massive healthcare provider to use its money on patients",
-      "description": "California was the first in the nation to raise the minimum wage to $15 in 2022. Will we keep the title this year? Will we do it again this year?",
+      "description": "That's right. This prop would only affect one organization. And the main reason — it wants it to stop spending money on other props. It's complicated, and amazingly petty.",
       "slug": "patient-spending",
       "imageUrl": "/images/business-3d-opened-yellow-bottle-of-pills.png",
       "location": "California"
@@ -79,56 +79,6 @@
       "slug": "criminal-penalties",
       "imageUrl": "/images/black-and-white-police-car.png",
       "location": "California"
-    }
-  ],
-  "localProps": [
-    {
-      "letter": "A",
-      "slug": "parking-reform",
-      "title": "Parking Reform Initiative",
-      "description": "Reduce minimum parking requirements for new developments to promote affordable housing and sustainable transportation.",
-      "imageUrl": "",
-      "location": "Los Angeles"
-    },
-    {
-      "letter": "B",
-      "slug": "rent-control-expansion",
-      "title": "Expand Rent Control",
-      "description": "Extend rent control protections to buildings constructed between 1978 and 1995.",
-      "imageUrl": "",
-      "location": "Santa Monica"
-    },
-    {
-      "letter": "C",
-      "slug": "beach-access",
-      "title": "Improve Beach Access",
-      "description": "Fund new public transportation routes and parking facilities to increase accessibility to beaches.",
-      "imageUrl": "",
-      "location": "Malibu"
-    },
-    {
-      "letter": "D",
-      "slug": "urban-farming",
-      "title": "Urban Farming Initiative",
-      "description": "Allow and promote urban farming in residential areas to increase local food production and sustainability.",
-      "imageUrl": "",
-      "location": "Pasadena"
-    },
-    {
-      "letter": "E",
-      "slug": "homeless-services",
-      "title": "Homeless Services Funding",
-      "description": "Increase funding for homeless services and affordable housing through a new business tax.",
-      "imageUrl": "",
-      "location": "Long Beach"
-    },
-    {
-      "letter": "F",
-      "slug": "clean-energy",
-      "title": "Clean Energy Transition",
-      "description": "Require all new buildings to include solar panels and transition city operations to 100% renewable energy by 2030.",
-      "imageUrl": "",
-      "location": "Berkeley"
     }
   ]
 }
