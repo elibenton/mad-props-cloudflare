@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { json, LoaderFunctionArgs } from '@remix-run/cloudflare'
-import { useLoaderData } from '@remix-run/react'
+import { Link, useLoaderData } from '@remix-run/react'
 import { stateProps } from '../data/props.json'
 import { localProps } from '../data/localProps.json'
 import CityPicker from '../components/CityPicker'
@@ -62,17 +62,24 @@ export default function Index() {
 	}
 
 	return (
-		<div className='max-w-4xl mx-auto p-4'>
-			<div className='max-w-3xl'>
-				<h1 className='text-4xl font-bold mb-4 bg-white '>MAD PROPS '24</h1>
-				<p className='text-3xl font-serif italic mb-6'>
+		<div className='max-w-4xl mx-auto px-4 py-8 sm:py-20'>
+			<div className='max-w-3xl space-y-4 mb-24'>
+				<h1 className='text-4xl sm:text-5xl font-bold mb-8'>MAD PROPS '24</h1>
+				<p className='text-2xl font-serif italic w-full sm:w-3/4'>
 					A non-partisan, not-too-serious voter guide to the California ballot measures.
 				</p>
-				<p className='text-sm mb-12'>Learn more about this website here or dive in below!</p>
+				<p className='w-full sm:w-3/4'>
+					Election Day is November 5th! In California, ballots are already in the mail. There's
+					still plenty for new voters to register. Learn more about this project{' '}
+					<Link to='/about'>
+						<span className='underline'>here</span>
+					</Link>
+					, or go ahead and jump in!
+				</p>
 			</div>
 
 			<section className='mb-36'>
-				<h2 className='text-2xl font-extrabold sticky top-0 sm:relative bg-white border-b-2 border-black -mx-4 px-4 py-3 z-20'>
+				<h2 className='text-2xl font-extrabold sticky top-8 sm:top-0 sm:relative bg-white border-b-2 border-black -mx-4 px-4 py-3 z-20'>
 					California Propositions
 				</h2>
 				<div className='flex flex-col'>
@@ -90,7 +97,7 @@ export default function Index() {
 
 			<section className='mb-36 min-h-72'>
 				{!isOpen ? (
-					<div className='sticky top-0 sm:relative bg-white z-10 -mx-4 pt-3 px-4 z-20'>
+					<div className='sticky top-8 sm:top-0 sm:relative bg-white -mx-4 pt-3 px-4 z-20'>
 						<button onClick={() => setIsOpen(true)} className='w-full text-left'>
 							<h2 className='text-2xl font-extrabold z-20'>{userCity} Propositions</h2>
 							<p className='text-sm border-b-2 border-black -mx-4 px-4 pb-3 italic'>

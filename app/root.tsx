@@ -55,6 +55,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 				<Links />
 			</head>
 			<body>
+				<section className='top-0 sticky w-full text-xs text-white bg-gray-800 text-center p-2 z-50'>
+					This site is under construction. Information is not verified!
+				</section>
 				{children}
 				<section className='w-full border-t-2 border-black flex flex-col sm:flex-row justify-between p-4'>
 					<div className='mt-2 mb-6'>
