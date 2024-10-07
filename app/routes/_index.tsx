@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { json, LoaderFunctionArgs } from '@remix-run/cloudflare'
-import { useLoaderData, Link } from '@remix-run/react'
+import { useLoaderData } from '@remix-run/react'
 import { stateProps } from '../data/props.json'
 import { localProps } from '../data/localProps.json'
 import CityPicker from '../components/CityPicker'
+import PropCard from '../components/PropCard'
 
 interface Prop {
 	letter: string
@@ -12,6 +13,8 @@ interface Prop {
 	location: string
 	description: string
 	imageUrl: string
+	index: number
+	type: string
 }
 
 interface Vote {
@@ -69,16 +72,17 @@ export default function Index() {
 			</div>
 
 			<section className='mb-36'>
-				<h2 className='text-2xl font-extrabold sticky top-0 sm:relative bg-white border-b-2 border-black -mx-4 px-4 py-3 z-10'>
+				<h2 className='text-2xl font-extrabold sticky top-0 sm:relative bg-white border-b-2 border-black -mx-4 px-4 py-3 z-20'>
 					California Propositions
 				</h2>
 				<div className='flex flex-col'>
-					{stateProps.map((prop) => (
+					{stateProps.map((prop, index) => (
 						<PropCard
 							key={prop.location + prop.letter}
 							prop={prop}
 							vote={votes[`${prop.location}-${prop.letter}`]}
 							onVote={(newVote) => handleVote(`${prop.location}-${prop.letter}`, newVote)}
+							index={index}
 						/>
 					))}
 				</div>
@@ -86,9 +90,9 @@ export default function Index() {
 
 			<section className='mb-36 min-h-72'>
 				{!isOpen ? (
-					<div className='sticky top-0 sm:relative bg-white z-10 -mx-4 pt-3 px-4'>
+					<div className='sticky top-0 sm:relative bg-white z-10 -mx-4 pt-3 px-4 z-20'>
 						<button onClick={() => setIsOpen(true)} className='w-full text-left'>
-							<h2 className='text-2xl font-extrabold'>{userCity} Propositions</h2>
+							<h2 className='text-2xl font-extrabold z-20'>{userCity} Propositions</h2>
 							<p className='text-sm border-b-2 border-black -mx-4 px-4 pb-3 italic'>
 								Registered somewhere else? Click here.
 							</p>
@@ -111,64 +115,18 @@ export default function Index() {
 							</p>
 						</div>
 					) : (
-						filteredLocalProps.map((prop) => (
+						filteredLocalProps.map((prop, index) => (
 							<PropCard
 								key={prop.location + prop.letter}
 								prop={prop}
 								vote={votes[`${prop.location}-${prop.letter}`]}
 								onVote={(newVote) => handleVote(`${prop.location}-${prop.letter}`, newVote)}
+								index={index}
 							/>
 						))
 					)}
 				</div>
 			</section>
 		</div>
-	)
-}
-
-function PropCard({
-	prop,
-	vote = 'undecided',
-	onVote
-}: {
-	prop: Prop
-	vote?: VoteState
-	onVote: (newVote: VoteState) => void
-}) {
-	return (
-		// <Link
-		// 	to={`/${prop.location.toLowerCase()}/prop-${prop.letter.toLowerCase()}`}
-		// 	prefetch='intent'>
-		<div className='border-b-2 border-black -mx-4 py-5 px-4 overflow-hidden group relative flex flex-row justify-between'>
-			<div className={`space-y-4 ${prop.imageUrl ? '-mr-16' : 'mr-0'} sm:mr-0`}>
-				{/* Proposition title and description */}
-				<h3 className='text-xl font-semibold mb-2'>
-					<b>Prop {prop.letter}</b> {prop.title}
-				</h3>
-				<p>{prop.description}</p>
-				<div className='space-x-2'>
-					<button
-						onClick={() => onVote('yes')}
-						className={`z-10 border-2 border-green-500 font-sm px-2.5 py-1 rounded inline-block 
-                ${vote === 'yes' ? 'bg-green-500 text-white' : 'bg-green-50 text-green-500'}`}>
-						Yes
-					</button>
-					<button
-						onClick={() => onVote('no')}
-						className={`z-10 border-2 border-red-500 font-sm px-2.5 py-1 rounded inline-block 
-                ${vote === 'no' ? 'bg-red-500 text-white' : 'bg-red-50 text-red-500'}`}>
-						No
-					</button>
-				</div>
-			</div>
-			{prop.imageUrl && (
-				<img
-					src={prop.imageUrl}
-					alt={`Prop ${prop.letter}`}
-					className='relative flex-none -right-16 sm:right-0 w-52 h-52 sm:w-72 sm:h-72 object-contain object-center p-1'
-				/>
-			)}
-		</div>
-		// </Link>
 	)
 }

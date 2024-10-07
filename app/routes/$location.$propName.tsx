@@ -1,53 +1,44 @@
 // app/routes/$location.$propName.tsx
 import { json, type LoaderFunctionArgs } from '@remix-run/cloudflare'
 import { useLoaderData, Link } from '@remix-run/react'
+import { stateProps } from '../data/props.json'
+import { localProps } from '../data/localProps.json'
+// import v from 'voca'
 
-interface PropDetail {
+interface Prop {
 	letter: string
 	title: string
+	slug: string
 	location: string
-	yesVote: string
-	noVote: string
-	proponents: string[]
-	opponents: string[]
 	description: string
+	imageUrl: string
+	index: number
 }
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
 	const { location, propName } = params
 
-	// In a real application, you would fetch this data from an API or database
-	// based on the location and propName parameters
-	const propDetail: PropDetail = {
-		letter: propName?.toUpperCase() ?? '',
-		title: `Proposition ${propName?.toUpperCase()}`,
-		location: location === 'state' ? 'California' : location ?? '',
-		yesVote: 'Support the proposition',
-		noVote: 'Oppose the proposition',
-		proponents: ['Proponent Organization 1', 'Proponent Individual 1'],
-		opponents: ['Opponent Organization 1', 'Opponent Individual 1'],
-		description: 'Detailed description of the proposition...'
-	}
+	const detailedProp = stateProps.filter(
+		(prop) =>
+			prop.location.toLowerCase() === location.toLowerCase() &&
+			prop.letter.toLowerCase() === propName.slice(-1).toLowerCase()
+	)
 
-	return json({ propDetail })
+	return json({ detailedProp })
 }
 
 export default function PropDetail() {
-	const { propDetail } = useLoaderData<typeof loader>()
-
+	const { detailedProp } = useLoaderData<typeof loader>()
+	console.log(detailedProp)
 	return (
 		<div className='container mx-auto p-4'>
-			<nav className='mb-4'>
+			{/* <nav className='mb-4'>
 				<Link to='/' className='text-blue-500 hover:underline'>
 					&larr; Back to All Props
 				</Link>
-			</nav>
+			</nav> */}
 
-			<h1 className='text-3xl font-bold mb-4'>
-				{propDetail.location} Proposition {propDetail.letter}: {propDetail.title}
-			</h1>
-
-			<div className='bg-white shadow-md rounded-lg p-6 mb-6'>
+			{/* <div className='bg-white shadow-md rounded-lg p-6 mb-6'>
 				<h2 className='text-xl font-semibold mb-2'>Summary</h2>
 				<p className='mb-4'>{propDetail.description}</p>
 
@@ -80,7 +71,7 @@ export default function PropDetail() {
 						</ul>
 					</div>
 				</div>
-			</div>
+			</div> */}
 		</div>
 	)
 }

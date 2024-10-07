@@ -57,9 +57,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
 			<body>
 				{children}
 				<section className='w-full border-t-2 border-black flex flex-col sm:flex-row justify-between p-4'>
-					<Link prefetch='viewport' to='/'>
-						<h1 className='text-lg font-bold mt-2 mb-6'>MAD PROPS 2024</h1>
-					</Link>
+					<div className='mt-2 mb-6'>
+						<Link prefetch='viewport' to='/'>
+							<h1 className='text-lg font-bold'>MAD PROPS 2024</h1>
+						</Link>
+						<a href='https://registertovote.ca.gov/'>Register to vote in California</a>
+					</div>
 					<div className='flex flex-row space-x-4'>
 						<ul>
 							<li>
@@ -75,14 +78,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
 						</ul>
 						<ul>
 							<li>
-								<Link prefetch='viewport' to='https://www.kalw.org/'>
-									KALW
-								</Link>
+								<a href='https://www.kalw.org/'>KALW</a>
 							</li>
 							<li>
-								<Link prefetch='viewport' to='https://www.pacificreview.org/'>
-									The Pacific Review
-								</Link>
+								<a href='https://www.pacificreview.org/'>The Pacific Review</a>
 							</li>
 						</ul>
 					</div>

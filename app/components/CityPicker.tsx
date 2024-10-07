@@ -14,6 +14,14 @@ interface CityPickerProps {
 	onCityChange: (city: string) => void
 }
 
+const people = [
+	{ id: 1, name: 'Durward Reynolds' },
+	{ id: 2, name: 'Kenton Towne' },
+	{ id: 3, name: 'Therese Wunsch' },
+	{ id: 4, name: 'Benedict Kessler' },
+	{ id: 5, name: 'Katelyn Rohan' }
+]
+
 export default function CityPicker({ onCityChange }: CityPickerProps) {
 	const [query, setQuery] = useState('')
 	const [selectedCity, setSelectedCity] = useState(null)
@@ -34,36 +42,24 @@ export default function CityPicker({ onCityChange }: CityPickerProps) {
 				setSelectedCity(city)
 				onCityChange(city)
 			}}>
-			{/* <Label className='block text-sm font-medium leading-6 text-gray-900'>Assigned to</Label> */}
-			<div className='relative mt-2'>
+			<div className='pt-2 relative'>
 				<ComboboxInput
-					className='text-2xl font-extrabold w-full bg-white py-1.5 pl-3 pr-10 text-black border-b-2 border-black focus:border-indigo-600'
-					onChange={(event) => setQuery(event.target.value)}
-					onBlur={() => setQuery('')}
-					autoFocus={true}
+					aria-label='Assignee'
+					className='relative w-full border-x-0 border-t-0 border-b-2 border-black focus:ring-0 focus:border-black px-4 -mx-4 text-xl font-bold'
 					displayValue={(city) => city?.name}
+					onChange={(event) => setQuery(event.target.value)}
+					placeholder='Type to search...'
+					autoFocus
 				/>
-				{/* <ComboboxButton className='absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none'>
-					<ChevronUpDownIcon className='h-5 w-5 text-gray-400' aria-hidden='true' />
-				</ComboboxButton> */}
-
-				{filteredCities.length > 0 && (
-					<ComboboxOptions className='absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm '>
-						{filteredCities.map((city) => (
-							<ComboboxOption
-								key={city.name}
-								value={city}
-								className='group relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white'>
-								<span className='block truncate group-data-[selected]:font-semibold'>
-									{city.name}
-								</span>
-
-								<span className='absolute inset-y-0 right-0 hidden items-center pr-4 text-indigo-600 group-data-[selected]:flex group-data-[focus]:text-white'>
-									<CheckIcon className='h-5 w-5' aria-hidden='true' />
-								</span>
-							</ComboboxOption>
-						))}
-					</ComboboxOptions>
+				<ComboboxOptions className='absolute z-30 mt-1 max-h-60 w-full overflow-hidden bg-white p-1 text-base ring-1 ring-black ring-opacity-5 focus:outline-none '>
+					{filteredCities.map((city) => (
+						<ComboboxOption key={city.id} value={city} className='data-[focus]:bg-blue-100'>
+							{city.name}
+						</ComboboxOption>
+					))}
+				</ComboboxOptions>
+				{query !== '' && filteredCities.length === 0 && (
+					<p className='p-4 text-sm text-gray-500'>That city is not in our database.</p>
 				)}
 			</div>
 		</Combobox>
