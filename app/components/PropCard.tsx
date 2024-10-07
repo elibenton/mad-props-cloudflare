@@ -57,7 +57,7 @@ function PropCard({
 						No
 					</button>
 					{index === 0 && vote === 'undecided' && (
-						<span className='absolute top-full translate-y-2 transform -translate-x-32 mb-2 px-3 py-1 text-xs bg-gray-800 text-white rounded-lg opacity-0 group-hover/buttons:opacity-100 transition-opacity duration-300 whitespace-nowrap'>
+						<span className='absolute bottom-full transform -translate-x-[124px] mb-2 px-3 py-1 text-xs bg-gray-800 text-white rounded-lg opacity-0 group-hover/buttons:opacity-100 transition-opacity duration-300 whitespace-nowrap'>
 							How will you vote?
 						</span>
 					)}
