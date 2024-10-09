@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react'
 import { json, LoaderFunctionArgs, ActionFunctionArgs } from '@remix-run/cloudflare'
 import { Link, useLoaderData, useFetcher } from '@remix-run/react'
-import { stateProps } from '../data/props.json'
-import { localProps } from '../data/localProps.json'
 import CityPicker from '../components/CityPicker'
 import PropCard from '../components/PropCard'
 
@@ -21,12 +19,10 @@ interface Vote {
 	[key: string]: 'yes' | 'no' | 'undecided'
 }
 
-// Add this type for the environment
 interface Env {
 	MAD_PROPS_DATA: KVNamespace
 }
 
-// Generate a unique user ID
 function generateUserId() {
 	return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
 }
@@ -35,15 +31,24 @@ export const loader = async ({ context, request }: LoaderFunctionArgs) => {
 	const { cf, env } = context.cloudflare as { cf: any; env: Env }
 	const userCity = cf?.city
 
-	// Get or set user ID from cookie
 	const cookieHeader = request.headers.get('Cookie') || ''
 	const userId = cookieHeader.includes('userId=')
 		? cookieHeader.split('userId=')[1].split(';')[0]
 		: generateUserId()
 
-	// Fetch votes from KV store
 	const votesJson = await env.MAD_PROPS_DATA.get(userId)
 	const votes = votesJson ? JSON.parse(votesJson) : {}
+
+	// Load state props from KV
+	const statePropsJson = await env.MAD_PROPS_DATA.get('stateProps')
+	const stateProps = statePropsJson ? JSON.parse(statePropsJson) : []
+
+	const hello = await env.MAD_PROPS_DATA.get('hello')
+	console.log({ statePropsJson, stateProps, hello })
+
+	// Load local props for the user's city from KV
+	const localPropsJson = await env.MAD_PROPS_DATA.get(`localProps_${userCity}`)
+	const localProps = localPropsJson ? JSON.parse(localPropsJson) : []
 
 	return json(
 		{ userCity, stateProps, localProps, votes },
@@ -66,14 +71,11 @@ export const action = async ({ request, context }: ActionFunctionArgs) => {
 		? cookieHeader.split('userId=')[1].split(';')[0]
 		: generateUserId()
 
-	// Fetch current votes
 	const votesJson = await env.MAD_PROPS_DATA.get(userId)
 	const votes = votesJson ? JSON.parse(votesJson) : {}
 
-	// Update votes
 	votes[propId] = vote
 
-	// Store updated votes
 	await env.MAD_PROPS_DATA.put(userId, JSON.stringify(votes))
 
 	return json({ success: true })
@@ -87,24 +89,24 @@ export default function Index() {
 		votes: initialVotes
 	} = useLoaderData<typeof loader>()
 	const fetcher = useFetcher()
+	console.log(stateProps)
 
 	const [userCity, setUserCity] = useState(initialUserCity)
 	const [isOpen, setIsOpen] = useState(false)
 	const [votes, setVotes] = useState<Vote>(initialVotes)
-	const [filteredLocalProps, setFilteredLocalProps] = useState<Prop[]>([])
+	const [filteredLocalProps, setFilteredLocalProps] = useState<Prop[]>(localProps)
 
 	useEffect(() => {
-		setFilteredLocalProps(
-			localProps.filter((prop) => prop.location.toLowerCase() === userCity?.toLowerCase())
-		)
-	}, [userCity, localProps])
+		setFilteredLocalProps(localProps)
+	}, [localProps])
 
 	const handleCityChange = (newCity) => {
 		setUserCity(newCity.name)
 		setIsOpen(false)
+		// Fetch new local props for the selected city
+		fetcher.load(`/?index&city=${newCity.name}`)
 	}
 
-	// Handler for voting
 	const handleVote = (propId: string, newVote: 'yes' | 'no' | 'undecided') => {
 		fetcher.submit({ propId, vote: newVote }, { method: 'post' })
 		setVotes((prev) => ({ ...prev, [propId]: newVote }))
@@ -144,7 +146,7 @@ export default function Index() {
 				</div>
 			</section>
 
-			<section className='mb-36 min-h-72'>
+			{/* <section className='mb-36 min-h-72'>
 				{!isOpen ? (
 					<div className='sticky top-8 sm:top-0 sm:relative bg-white -mx-4 pt-3 px-4 z-20'>
 						<button onClick={() => setIsOpen(true)} className='w-full text-left'>
@@ -182,7 +184,7 @@ export default function Index() {
 						))
 					)}
 				</div>
-			</section>
+			</section> */}
 		</div>
 	)
 }
