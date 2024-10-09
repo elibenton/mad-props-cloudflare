@@ -24,6 +24,7 @@
     "isbot": "^4.1.0",
     "react": "18.3",
     "react-dom": "18.3",
+    "recharts": "^2.12.7",
     "voca": "^1.4.1"
   },
   "devDependencies": {
