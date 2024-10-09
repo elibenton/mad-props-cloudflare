@@ -38,11 +38,15 @@ export default function PropDetail() {
 				</Link>
 			</nav> */}
 
-			{/* <div className='bg-white shadow-md rounded-lg p-6 mb-6'>
-				<h2 className='text-xl font-semibold mb-2'>Summary</h2>
-				<p className='mb-4'>{propDetail.description}</p>
+			<div className=' p-6 mb-6'>
+				<h2 className='text-3xl font-semibold mb-2'>
+					Prop {detailedProp[0].letter} {detailedProp[0].title}
+				</h2>
+				<h3 className='text-xl font-semibold mb-2'>{detailedProp[0].location}</h3>
+				<p className='mb-4'>{detailedProp[0].description}</p>
+				<p className='text-red-600'>More information coming soon!</p>
 
-				<div className='grid grid-cols-1 md:grid-cols-2 gap-4 mb-4'>
+				{/* <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mb-4'>
 					<div className='bg-green-100 p-4 rounded'>
 						<h3 className='font-semibold text-green-800'>Yes Vote Means</h3>
 						<p>{propDetail.yesVote}</p>
@@ -51,9 +55,9 @@ export default function PropDetail() {
 						<h3 className='font-semibold text-red-800'>No Vote Means</h3>
 						<p>{propDetail.noVote}</p>
 					</div>
-				</div>
+				</div> */}
 
-				<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+				{/* <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
 					<div>
 						<h3 className='font-semibold mb-2'>Proponents</h3>
 						<ul className='list-disc pl-5'>
@@ -70,8 +74,8 @@ export default function PropDetail() {
 							))}
 						</ul>
 					</div>
-				</div>
-			</div> */}
+				</div> */}
+			</div>
 		</div>
 	)
 }

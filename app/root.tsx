@@ -54,12 +54,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
 				<Meta />
 				<Links />
 			</head>
-			<body>
+			<body className='flex flex-col min-h-screen'>
 				<section className='top-0 sticky w-full text-xs text-white bg-gray-800 text-center p-2 z-50'>
 					This site is under construction. Information is not verified!
 				</section>
-				{children}
-				<section className='w-full border-t-2 border-black flex flex-col sm:flex-row justify-between p-4'>
+				<section className='flex-grow'>{children}</section>
+				<section className='mt-auto w-full border-t-2 border-black flex flex-col sm:flex-row justify-between p-4'>
 					<div className='mt-2 mb-6'>
 						<Link prefetch='viewport' to='/'>
 							<h1 className='text-lg font-bold'>MAD PROPS 2024</h1>

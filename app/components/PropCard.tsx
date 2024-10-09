@@ -11,8 +11,7 @@ function PropCard({
 	onVote: (newVote: VoteState) => void
 	index: number
 }) {
-	const rotateDirection =
-		index % 2 === 0 ? 'group-hover/card:rotate-6' : 'group-hover/card:-rotate-6'
+	const rotateDirection = index % 2 === 0 ? 'hover:rotate-6' : 'hover:-rotate-6'
 
 	const handleVote = (newVote: VoteState) => {
 		if (vote === newVote) {
@@ -23,12 +22,12 @@ function PropCard({
 	}
 
 	return (
-		<div className='border-b-2 border-black -mx-4 py-5 px-4 overflow-hidden group/card relative flex flex-row justify-between'>
+		<div className='border-b-2 border-black -mx-4 py-5 px-4 overflow-hidden relative flex flex-row justify-between'>
 			<div className={`${prop.imageUrl ? '-mr-16' : 'mr-0'} sm:mr-0 relative`}>
 				<Link
 					to={`/${prop.location.toLowerCase()}/prop-${prop.letter.toLowerCase()}`}
 					prefetch='intent'
-					className='block group'>
+					className='block'>
 					<h3 className='text-xl font-semibold mb-2 relative underline decoration-white hover:decoration-yellow-300 decoration-4 transition-all duration-300 ease-out'>
 						<b>Prop {prop.letter}</b> {prop.title}
 					</h3>
@@ -46,14 +45,14 @@ function PropCard({
 						onClick={() => handleVote('yes')}
 						className={`z-10 border-2 border-green-500 font-sm px-2.5 py-1 rounded inline-block 
               ${vote === 'yes' ? 'bg-green-500 text-white' : 'bg-green-50 text-green-500'}
-              relative group`}>
+              relative`}>
 						Yes
 					</button>
 					<button
 						onClick={() => handleVote('no')}
 						className={`z-10 border-2 border-red-500 font-sm px-2.5 py-1 rounded inline-block 
               ${vote === 'no' ? 'bg-red-500 text-white' : 'bg-red-50 text-red-500'}
-              relative group`}>
+              relative`}>
 						No
 					</button>
 					{index === 0 && vote === 'undecided' && (

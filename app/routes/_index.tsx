@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { json, LoaderFunctionArgs } from '@remix-run/cloudflare'
-import { Link, useLoaderData } from '@remix-run/react'
+import { json, LoaderFunctionArgs, ActionFunctionArgs } from '@remix-run/cloudflare'
+import { Link, useLoaderData, useFetcher } from '@remix-run/react'
 import { stateProps } from '../data/props.json'
 import { localProps } from '../data/localProps.json'
 import CityPicker from '../components/CityPicker'
@@ -21,27 +21,77 @@ interface Vote {
 	[key: string]: 'yes' | 'no' | 'undecided'
 }
 
-export const loader = async ({ context }: LoaderFunctionArgs) => {
-	const { cf } = context.cloudflare
+// Add this type for the environment
+interface Env {
+	MAD_PROPS_DATA: KVNamespace
+}
+
+// Generate a unique user ID
+function generateUserId() {
+	return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+}
+
+export const loader = async ({ context, request }: LoaderFunctionArgs) => {
+	const { cf, env } = context.cloudflare as { cf: any; env: Env }
 	const userCity = cf?.city
 
-	return json({ userCity, stateProps, localProps })
+	// Get or set user ID from cookie
+	const cookieHeader = request.headers.get('Cookie') || ''
+	const userId = cookieHeader.includes('userId=')
+		? cookieHeader.split('userId=')[1].split(';')[0]
+		: generateUserId()
+
+	// Fetch votes from KV store
+	const votesJson = await env.MAD_PROPS_DATA.get(userId)
+	const votes = votesJson ? JSON.parse(votesJson) : {}
+
+	return json(
+		{ userCity, stateProps, localProps, votes },
+		{
+			headers: {
+				'Set-Cookie': `userId=${userId}; Path=/; HttpOnly; Secure; SameSite=Strict`
+			}
+		}
+	)
+}
+
+export const action = async ({ request, context }: ActionFunctionArgs) => {
+	const { env } = context.cloudflare as { env: Env }
+	const formData = await request.formData()
+	const propId = formData.get('propId') as string
+	const vote = formData.get('vote') as 'yes' | 'no' | 'undecided'
+
+	const cookieHeader = request.headers.get('Cookie') || ''
+	const userId = cookieHeader.includes('userId=')
+		? cookieHeader.split('userId=')[1].split(';')[0]
+		: generateUserId()
+
+	// Fetch current votes
+	const votesJson = await env.MAD_PROPS_DATA.get(userId)
+	const votes = votesJson ? JSON.parse(votesJson) : {}
+
+	// Update votes
+	votes[propId] = vote
+
+	// Store updated votes
+	await env.MAD_PROPS_DATA.put(userId, JSON.stringify(votes))
+
+	return json({ success: true })
 }
 
 export default function Index() {
-	const { userCity: initialUserCity, stateProps, localProps } = useLoaderData<typeof loader>()
+	const {
+		userCity: initialUserCity,
+		stateProps,
+		localProps,
+		votes: initialVotes
+	} = useLoaderData<typeof loader>()
+	const fetcher = useFetcher()
 
 	const [userCity, setUserCity] = useState(initialUserCity)
 	const [isOpen, setIsOpen] = useState(false)
-	const [votes, setVotes] = useState<Vote>({})
+	const [votes, setVotes] = useState<Vote>(initialVotes)
 	const [filteredLocalProps, setFilteredLocalProps] = useState<Prop[]>([])
-
-	useEffect(() => {
-		const savedVotes = localStorage.getItem('propVotes')
-		if (savedVotes) {
-			setVotes(JSON.parse(savedVotes))
-		}
-	}, [])
 
 	useEffect(() => {
 		setFilteredLocalProps(
@@ -55,10 +105,9 @@ export default function Index() {
 	}
 
 	// Handler for voting
-	const handleVote = (propId: string, newVote: VoteState) => {
-		const newVotes = { ...votes, [propId]: newVote }
-		setVotes(newVotes)
-		localStorage.setItem('propVotes', JSON.stringify(newVotes))
+	const handleVote = (propId: string, newVote: 'yes' | 'no' | 'undecided') => {
+		fetcher.submit({ propId, vote: newVote }, { method: 'post' })
+		setVotes((prev) => ({ ...prev, [propId]: newVote }))
 	}
 
 	return (
